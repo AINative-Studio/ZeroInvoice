@@ -1,0 +1,139 @@
+{
+  "epics": [
+    {
+      "title": "Authentication & Project Setup",
+      "body": "Implement user login, registration, and API key handling for ZeroDB.",
+      "stories": [
+        {
+          "title": "User can register and receive JWT",
+          "acceptance_criteria": [
+            "Validates email and password",
+            "Stores JWT on success"
+          ]
+        },
+        {
+          "title": "User can input and save ZeroDB API key securely",
+          "acceptance_criteria": [
+            "Input API key in settings page",
+            "Store in localStorage",
+            "Use key in all future requests"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Client Management",
+      "body": "Users can add, edit, search, and manage clients stored in ZeroDB.",
+      "stories": [
+        {
+          "title": "User can create and edit client profile",
+          "acceptance_criteria": [
+            "Form includes name, email, notes",
+            "Client data stored in 'clients' namespace"
+          ]
+        },
+        {
+          "title": "User can search clients via semantic query",
+          "acceptance_criteria": [
+            "Search box uses vector similarity API",
+            "Filters by project namespace 'clients'"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Invoice Management",
+      "body": "Users can manage invoices and export them as PDFs.",
+      "stories": [
+        {
+          "title": "User can create invoice with line items",
+          "acceptance_criteria": [
+            "Form with line items, due date, client",
+            "Data stored in 'invoices' namespace"
+          ]
+        },
+        {
+          "title": "User can preview and download invoice as PDF",
+          "acceptance_criteria": [
+            "PDF rendering from form data",
+            "Works offline via html2pdf.js"
+          ]
+        },
+        {
+          "title": "User can send invoice via email",
+          "acceptance_criteria": [
+            "Email triggered with invoice attachment",
+            "Confirms success with toast"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Payments & Balances",
+      "body": "Users can log payments and see real-time balances per invoice.",
+      "stories": [
+        {
+          "title": "User can add a payment for an invoice",
+          "acceptance_criteria": [
+            "Select invoice, enter amount, method",
+            "Saved in 'payments' namespace"
+          ]
+        },
+        {
+          "title": "User sees updated balance on invoice detail",
+          "acceptance_criteria": [
+            "Payments reduce outstanding balance",
+            "Calculated on frontend in real-time"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AI Assistant & Drafts (MCP)",
+      "body": "Users interact with AI assistant to generate invoices from context.",
+      "stories": [
+        {
+          "title": "User can chat with assistant using MCP",
+          "acceptance_criteria": [
+            "MCP session created per user",
+            "All messages stored in 'mcp_messages'"
+          ]
+        },
+        {
+          "title": "Assistant can generate invoice draft",
+          "acceptance_criteria": [
+            "Draft appears in editable form",
+            "Saved in 'drafts' namespace"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Search, Settings & Polish",
+      "body": "Enable global search, theme support, and final UI/UX cleanup.",
+      "stories": [
+        {
+          "title": "User can search across clients and invoices",
+          "acceptance_criteria": [
+            "Search bar uses vector API",
+            "Scoped by namespace"
+          ]
+        },
+        {
+          "title": "User can toggle dark/light mode",
+          "acceptance_criteria": [
+            "Toggle persists via localStorage",
+            "Theme applied via Tailwind"
+          ]
+        },
+        {
+          "title": "System logs all actions in audit viewer",
+          "acceptance_criteria": [
+            "Each event stored in 'logs' namespace",
+            "Frontend displays sortable log table"
+          ]
+        }
+      ]
+    }
+  ]
+}
